@@ -1,0 +1,60 @@
+/*loader*/
+#loader{
+    background-size: 30%;
+    background: url(loader/75ez.gif);
+    height: 100vh;
+    width: 100%;
+    display: block;
+    margin: -10px ;
+    position: fixed;
+    z-index:  100;
+}
+body{
+    margin: 0;
+    padding: 0;
+    color: aliceblue ;
+    background: rgb(49, 46, 46) ;
+}
+/*navigation color*/
+.offcanvas-body .nav-link{
+    color: blue;
+    
+}
+.offcanvas-body .nav-link:hover{
+    color: rgb(9, 179, 43);
+}
+.offcanvas-body .active-1, .offcanvas-body .dropdown-item:hover{
+    color: blue ;
+}
+/*Social media*/
+.social{
+    margin-top: 50px;
+}
+/*polygon shape*/
+.carousel{
+    height: 430px;
+  background: #000;
+clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+}
+.social ul{
+    display: flex;
+    list-style: none;
+}
+
+.social ul li{
+    margin-left: 10px;
+    background: blueviolet;
+    color: antiquewhite;
+    padding: 9px;
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+    border-radius: 70px;
+}
+/*Footer Styling*/
+footer {
+    background: black;
+}
+footer ul li{
+    list-style: none;
+    padding: 10px;
+    color: aliceblue;
+}
