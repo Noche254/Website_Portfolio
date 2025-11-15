@@ -128,18 +128,189 @@ body {
     background-attachment: fixed;
     min-height: 100vh;
     position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(124, 58, 237, 0.1) 100%);
+    pointer-events: none;
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.contact-section h2 {
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.contact-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #7c3aed, transparent);
+    border-radius: 2px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    border: 1px solid #e6e6e6;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #7c3aed;
+    box-shadow: 0 4px 14px rgba(124, 58, 237, 0.12);
+}
+
+.contact-submit {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 2px solid #7c3aed;
+    background-color: #7c3aed;
+    color: white;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.contact-submit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.4s ease;
+}
+
+.contact-submit:hover {
+    background-color: #6d28d9;
+    border-color: #6d28d9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+}
+
+.contact-submit:hover::before {
+    left: 100%;
+}
+
+.contact-submit:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.25);
+}
+
+.contact-submit.sending {
+    transform: scale(0.98);
+    opacity: 0.95;
+    animation: pulse-button 0.6s ease-in-out;
+}
+
+@keyframes pulse-button {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(124, 58, 237, 0);
+    }
+}
+
+.contact-feedback {
+    margin-top: 12px;
+    min-height: 20px;
+    color: #1e7e34;
+    font-weight: 600;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #1a1a1a;
+    border-top: 1px solid rgba(124, 58, 237, 0.2);
+    color: #fff;
+}
+
+.footer-brand {
+    flex: 1;
+    max-width: 500px;
+}
+
+.footer-title {
+    font-size: 1.8em;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.footer-caption {
+    font-size: 0.95em;
+    color: #b0b0b0;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.footer .footer-socials {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.social-link-footer {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.social-link-footer:hover {
+    background: #7c3aed;
+    color: #fff;
+    transform: translateY(-3px);
 }
 
 .hero-content h1 {
-    font-size: 4em;
+    font-size: 3.2em;
     margin-bottom: 20px;
     animation: fadeInUp 1s ease-out;
+    color: #1a1a1a;
+    font-weight: 800;
+    line-height: 1.2;
 }
 
 .hero-content p {
-    font-size: 1.5em;
+    font-size: 1.2em;
     margin-bottom: 40px;
     animation: fadeInUp 1s ease-out 0.5s;
+    animation-fill-mode: both;
+    color: #333;
+    font-weight: 500;
 }
 
 .cta-button {
@@ -149,12 +320,46 @@ body {
     font-size: 18px;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    border: 2px solid #7c3aed;
+    font-weight: 600;
+    position: relative;
+    /* gentle floating animation similar to chat button */
+    animation: floatSmall 3s ease-in-out infinite;
+}
+
+.hero .cta-button {
+    animation: fadeInUp 1s ease-out 1s both;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.2);
+}
+
+.hero .cta-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.hero .cta-button:hover::after {
+    width: 300px;
+    height: 300px;
 }
 
 .cta-button:hover {
     background-color: #5b21b6;
+    border-color: #5b21b6;
     color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(124, 58, 237, 0.35);
 }
 
 /* Services Section */
@@ -167,6 +372,20 @@ body {
     font-size: 2.5em;
     margin-bottom: 40px;
     animation: fadeInUp 1s ease-out;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.services h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #7c3aed, transparent);
+    border-radius: 2px;
 }
 
 .service-list {
@@ -214,6 +433,20 @@ body {
 .about h2 {
     font-size: 2.5em;
     margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.about h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #7c3aed, transparent);
+    border-radius: 2px;
 }
 
 .about p {
@@ -232,12 +465,26 @@ body {
 .blog h2 {
     font-size: 2.5em;
     margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.blog h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #7c3aed, transparent);
+    border-radius: 2px;
 }
 
 .blog-posts {
     display: flex;
-    justify-content: center;
-    gap: 40px;
+    justify-content: space-around;
+    gap: 30px;
 }
 
 .post {
@@ -274,4 +521,517 @@ body {
 
 .post a:hover {
     color: #5b21b6;
+}
+
+/* Hero Content Styling */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: slideInDown 0.8s ease-out;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating Chat Button */
+.chat-button-container {
+    position: absolute;
+    bottom: 120px;
+    right: 50px;
+    z-index: 99;
+}
+
+.chat-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+    border: none;
+    color: white;
+    font-size: 1.8em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+.chat-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 32px rgba(124, 58, 237, 0.5);
+}
+
+.chat-button:active {
+    transform: scale(0.95);
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Slightly smaller float for CTA button to keep it subtle */
+@keyframes floatSmall {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.chat-toast {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    background: #1a1a1a;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    animation: toastPop 0.5s ease forwards;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wave-emoji-inline {
+    display: inline-block;
+    font-size: 1.2em;
+    animation: waveHand 0.6s ease-in-out infinite;
+}
+
+@keyframes waveHand {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(20deg);
+    }
+    75% {
+        transform: rotate(-20deg);
+    }
+}
+
+@keyframes toastPop {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    50% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+/* Waving Emoji on Scroll */
+.wave-emoji {
+    position: fixed;
+    font-size: 2em;
+    pointer-events: none;
+    z-index: 998;
+    opacity: 0;
+}
+
+.wave-emoji.show {
+    animation: waveFloat 2s ease-out forwards;
+}
+
+@keyframes waveFloat {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+    10% {
+        animation: wave 0.5s ease-in-out;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-80px) rotate(15deg);
+    }
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(20deg);
+    }
+    75% {
+        transform: rotate(-20deg);
+    }
+}
+
+/* Responsive Design - Tablets and Medium Screens */
+@media (max-width: 768px) {
+    /* Navigation */
+    .navbar {
+        padding: 15px;
+    }
+    
+    .navbar-brand {
+        font-size: 1.3em !important;
+    }
+    
+    .navbar .navbar-nav .nav-link {
+        font-size: 1em !important;
+        margin-left: 10px;
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding: 80px 15px;
+        min-height: 85vh;
+        background-attachment: scroll;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5em;
+        margin-bottom: 15px;
+    }
+    
+    .hero-content p {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+    
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+    
+    /* Social Icons - Hide on tablets */
+    .social-icons {
+        display: none;
+    }
+    
+    /* Services Section */
+    .service-list {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .service {
+        width: 100%;
+        padding: 30px;
+    }
+    
+    .services h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    
+    /* About Section */
+    .about h2 {
+        font-size: 2em;
+        margin-bottom: 25px;
+    }
+    
+    .about p {
+        font-size: 1em;
+    }
+    
+    /* Blog Section */
+    .blog h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    
+    .blog-posts {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .post {
+        width: 100%;
+        padding: 25px;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+        padding: 60px 15px;
+    }
+    
+    .contact-form {
+        max-width: 100% !important;
+    }
+    
+    .contact-section h2 {
+        font-size: 2em;
+    }
+    
+    /* Chat Button */
+    .chat-button-container {
+        bottom: 30px;
+        right: 30px;
+    }
+    
+    .chat-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5em;
+    }
+    
+    .chat-toast {
+        font-size: 0.85em;
+        padding: 10px 14px;
+    }
+    
+    /* Footer */
+    .footer {
+        padding: 40px 15px !important;
+    }
+    
+    .footer-title {
+        font-size: 1.5em;
+    }
+    
+    .footer-caption {
+        font-size: 0.9em;
+    }
+}
+
+/* Responsive Design - Mobile Screens */
+@media (max-width: 480px) {
+    /* Navigation */
+    .navbar {
+        padding: 12px;
+    }
+    
+    .navbar-brand {
+        font-size: 1.1em !important;
+    }
+    
+    .navbar-brand img {
+        width: 35px !important;
+        height: 35px !important;
+        margin-right: 8px !important;
+    }
+    
+    .navbar .navbar-nav .nav-link {
+        font-size: 0.95em !important;
+        margin-left: 5px;
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding: 70px 12px;
+        min-height: 90vh;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8em;
+        margin-bottom: 12px;
+        line-height: 1.1;
+    }
+    
+    .hero-content p {
+        font-size: 0.9em;
+        margin-bottom: 20px;
+    }
+    
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+    
+    /* Services Section */
+    .services {
+        padding: 60px 12px;
+    }
+    
+    .services h2 {
+        font-size: 1.6em;
+        margin-bottom: 25px;
+    }
+    
+    .service {
+        padding: 20px;
+        border-radius: 6px;
+    }
+    
+    .service-icon {
+        font-size: 2.5em;
+        margin-bottom: 15px;
+    }
+    
+    .service h3 {
+        font-size: 1.4em;
+        margin-bottom: 12px;
+    }
+    
+    .service p {
+        font-size: 1em;
+    }
+    
+    /* About Section */
+    .about {
+        padding: 50px 12px;
+    }
+    
+    .about h2 {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+    }
+    
+    .about p {
+        font-size: 0.95em;
+        line-height: 1.5;
+    }
+    
+    /* Blog Section */
+    .blog {
+        padding: 50px 12px;
+    }
+    
+    .blog h2 {
+        font-size: 1.6em;
+        margin-bottom: 25px;
+    }
+    
+    .post {
+        padding: 20px;
+        border-radius: 6px;
+    }
+    
+    .post-icon {
+        font-size: 2.2em;
+        margin-bottom: 12px;
+    }
+    
+    .post h3 {
+        font-size: 1.3em;
+        margin-bottom: 12px;
+    }
+    
+    .post p {
+        font-size: 0.95em;
+    }
+    
+    .post a {
+        font-size: 0.95em;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+        padding: 50px 12px;
+    }
+    
+    .contact-section h2 {
+        font-size: 1.6em;
+        margin-bottom: 15px;
+    }
+    
+    .contact-section p {
+        font-size: 0.95em;
+    }
+    
+    .row {
+        flex-direction: column;
+    }
+    
+    .col-md-6 {
+        width: 100% !important;
+        margin-bottom: 12px;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    /* Chat Button */
+    .chat-button-container {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .chat-button {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3em;
+        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+    }
+    
+    .chat-toast {
+        font-size: 0.8em;
+        padding: 8px 12px;
+        border-radius: 6px;
+        bottom: 70px;
+        white-space: normal;
+        max-width: 150px;
+    }
+    
+    .wave-emoji-inline {
+        font-size: 1em;
+    }
+    
+    /* Footer */
+    .footer {
+        padding: 30px 12px !important;
+    }
+    
+    .footer-brand {
+        max-width: 100%;
+    }
+    
+    .footer-title {
+        font-size: 1.3em;
+        margin-bottom: 8px;
+    }
+    
+    .footer-caption {
+        font-size: 0.85em;
+        line-height: 1.5;
+    }
+    
+    .footer .footer-socials {
+        margin-top: 15px;
+        gap: 10px;
+    }
+    
+    .social-link-footer {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2em;
+    }
 }

@@ -70,3 +70,58 @@ document.getElementById('backToTopBtn').addEventListener('click', function () {
         behavior: 'smooth'
     });
 });
+
+// Contact form handling
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('cf-name');
+        const email = document.getElementById('cf-email');
+        const message = document.getElementById('cf-message');
+        const feedback = document.getElementById('contactFeedback');
+        const submitBtn = document.querySelector('.contact-submit');
+
+        // basic validation
+        if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
+            feedback.textContent = 'Please fill all required fields.';
+            feedback.style.color = '#c82333';
+            return;
+        }
+
+        // show sending state
+        submitBtn.classList.add('sending');
+        submitBtn.disabled = true;
+        feedback.textContent = '';
+
+        // simulate async send
+        setTimeout(() => {
+            submitBtn.classList.remove('sending');
+            submitBtn.disabled = false;
+            feedback.style.color = '#1e7e34';
+            feedback.textContent = 'Message sent — thank you!';
+            contactForm.reset();
+            // small animation on success
+            submitBtn.animate([
+                { transform: 'scale(1)' },
+                { transform: 'scale(1.05)' },
+                { transform: 'scale(1)' }
+            ], { duration: 300 });
+        }, 900);
+    });
+}
+
+// Chat Button Interaction
+const chatBtn = document.getElementById('chatBtn');
+const chatToast = document.getElementById('chatToast');
+
+if (chatBtn) {
+    chatBtn.addEventListener('click', function () {
+        chatToast.style.animation = 'none';
+        setTimeout(() => {
+            chatToast.style.animation = 'toastPop 0.5s ease forwards';
+        }, 10);
+        // In a real scenario, this could open a chat window or redirect to a chat service
+        console.log('Chat button clicked!');
+    });
+}
