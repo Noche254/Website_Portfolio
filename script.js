@@ -111,17 +111,19 @@ if (contactForm) {
     });
 }
 
-// Chat Button Interaction
-const chatBtn = document.getElementById('chatBtn');
-const chatToast = document.getElementById('chatToast');
+// Timed Chat Tooltip
+document.addEventListener('DOMContentLoaded', () => {
+    const chatTooltip = document.getElementById('chatTooltip');
 
-if (chatBtn) {
-    chatBtn.addEventListener('click', function () {
-        chatToast.style.animation = 'none';
+    if (chatTooltip) {
+        // Show the tooltip
         setTimeout(() => {
-            chatToast.style.animation = 'toastPop 0.5s ease forwards';
-        }, 10);
-        // In a real scenario, this could open a chat window or redirect to a chat service
-        console.log('Chat button clicked!');
-    });
-}
+            chatTooltip.classList.add('show');
+        }, 500); // Small delay to ensure the page is settled
+
+        // Hide the tooltip after 4 seconds
+        setTimeout(() => {
+            chatTooltip.classList.remove('show');
+        }, 4000); // 4 seconds
+    }
+});

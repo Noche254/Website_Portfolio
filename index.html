@@ -8,6 +8,8 @@
     <meta name="keywords" content="software, engineering, development, technology, Noche Inc">
     <meta name="author" content="Noche Inc">
     <title>Noche Inc</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
@@ -45,18 +47,9 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Hey, Welcome to NocheInc</h1>
-            <p>Empowering businesses with cutting-edge solutions.</p>
-            <a href="#services" class="cta-button">Explore Our Work</a>
-        </div>
-        <!-- Chat Button -->
-        <div class="chat-button-container">
-            <button id="chatBtn" class="chat-button" title="Chat with me">
-                <span class="chat-icon">💬</span>
-            </button>
-            <div id="chatToast" class="chat-toast">
-                <span class="wave-emoji-inline">👋</span> Let's chat! I'm here to help.
-            </div>
+            <h1 class="hero-title">Welcome to Noche Inc <span class="wave-emoji">👋</span></h1>
+            <p class="hero-subtitle">Empowering Your Digital Future with Innovative Software Solutions</p>
+            <a href="#contact" class="cta-button">Get Started</a>
         </div>
     </section>
 
@@ -84,8 +77,28 @@
 
     <!-- About Section -->
     <section id="about-us" class="about fade-in">
-        <h2>About Us</h2>
-        <p>Noche Inc is committed to pushing the boundaries of software engineering. We build innovative technology to help businesses thrive in the digital age.</p>
+        <h2>About Me</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <h3>Get to know Me</h3>
+                <p>I'm a Frontend Focused Web Developer building and managing the Front-end of Websites and Web Applications that leads to the success of the overall product. Check out some of my work in the Projects section.</p>
+                <p>I also like sharing content related to the stuff that I have learned over the years in Web Development so it can help other people of the Dev Community. Feel free to Connect or Follow me on my Linkedin and Instagram where I post useful content related to Web Development and Programming.</p>
+                <p>I'm open to Job opportunities where I can contribute, learn and grow. If you have a good opportunity that matches my skills and experience then don't hesitate to contact me.</p>
+                <a href="#contact" class="cta-button">Contact Me</a>
+            </div>
+            <div class="about-skills">
+                <h3>My Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-box">HTML</div>
+                    <div class="skill-box">CSS</div>
+                    <div class="skill-box">JavaScript</div>
+                    <div class="skill-box">Git & GitHub</div>
+                    <div class="skill-box">SEO</div>
+                    <div class="skill-box">Responsive Design</div>
+                    <div class="skill-box">Tailwind</div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Blog Section -->
@@ -148,6 +161,13 @@
         </div>
         <div class="text-center small mt-3">&copy; 2025 Noche Inc | All Rights Reserved</div>
     </footer>
+
+    <div class="chat-button-container">
+        <button class="chat-button" id="chatButton" aria-label="Open Chat">
+            <i class="fa fa-comment"></i>
+            <span class="chat-tooltip" id="chatTooltip">Chat with me &#x1F44B;</span>
+        </button>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>

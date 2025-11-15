@@ -13,7 +13,7 @@
 }
 
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Lato', sans-serif;
     color: #333;
     background-color: #f7f7f7;
 }
@@ -129,6 +129,9 @@ body {
     min-height: 100vh;
     position: relative;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero::before {
@@ -449,10 +452,42 @@ body {
     border-radius: 2px;
 }
 
-.about p {
-    font-size: 1.2em;
-    max-width: 800px;
+.about-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1200px;
     margin: 0 auto;
+}
+
+.about-text {
+    flex: 1;
+    text-align: left;
+}
+
+.about-skills {
+    flex: 1;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.skill-box {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Blog Section */
@@ -555,7 +590,7 @@ body {
 
 /* Floating Chat Button */
 .chat-button-container {
-    position: absolute;
+    position: fixed;
     bottom: 120px;
     right: 50px;
     z-index: 99;
@@ -606,59 +641,27 @@ body {
     }
 }
 
-.chat-toast {
+.chat-button:hover .chat-tooltip,
+.chat-tooltip.show {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+.chat-tooltip {
     position: absolute;
-    bottom: 80px;
-    right: 0;
-    background: #1a1a1a;
-    color: white;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 0.9em;
+    top: 50%;
+    right: 100%;
+    margin-right: 15px; /* space between button and tooltip */
+    transform: translateY(-50%) translateX(10px); /* Initial position for transition */
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
     white-space: nowrap;
     opacity: 0;
-    transform: translateY(10px);
-    pointer-events: none;
-    transition: all 0.3s ease;
-    animation: toastPop 0.5s ease forwards;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.wave-emoji-inline {
-    display: inline-block;
-    font-size: 1.2em;
-    animation: waveHand 0.6s ease-in-out infinite;
-}
-
-@keyframes waveHand {
-    0%, 100% {
-        transform: rotate(0deg);
-    }
-    25% {
-        transform: rotate(20deg);
-    }
-    75% {
-        transform: rotate(-20deg);
-    }
-}
-
-@keyframes toastPop {
-    0% {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    50% {
-        opacity: 1;
-    }
-    85% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(10px);
-    }
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none; /* So it doesn't interfere with button clicks */
 }
 
 /* Waving Emoji on Scroll */
