@@ -185,7 +185,8 @@ body {
 .contact-submit {
     display: inline-block;
     padding: 12px 28px;
-    border-radius: 50px;
+    width: 100%;
+    border-radius: 5px; /* Adjusted from 50px for a more rectangular shape */
     cursor: pointer;
     border: 2px solid #7c3aed;
     background-color: #7c3aed;
@@ -208,8 +209,9 @@ body {
 }
 
 .contact-submit:hover {
-    background-color: #6d28d9;
-    border-color: #6d28d9;
+    background-color: #fff;
+    color: #7c3aed;
+    border-color: #7c3aed;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
 }
