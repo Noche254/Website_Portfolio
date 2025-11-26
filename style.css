@@ -412,6 +412,11 @@ body {
     transform: translateY(-10px);
 }
 
+.service-list > .service {
+    text-decoration: none;
+    color: inherit;
+}
+
 .service-icon {
     font-size: 3em;
     color: #7c3aed;
